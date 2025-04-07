@@ -44,14 +44,14 @@ body {
   .container > .island {
     flex: 1;
   }
+}
 
-  .right-col {
+.right-col {
     flex: 2;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
-}
 
 .island {
   background: var(--island-bg);
