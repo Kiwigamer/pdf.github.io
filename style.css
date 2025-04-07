@@ -1,0 +1,258 @@
+:root {
+  --bg: #0c0c0f;
+  --text: #f0f0f0;
+  --island-bg: rgba(255, 255, 255, 0.035);
+  --border: rgba(255, 255, 255, 0.07);
+  --highlight: #7c5fff;
+  --radius: 1.25rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Urbanist", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 920px;
+  width: 100%;
+  margin: 2rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .container > .island {
+    flex: 1;
+  }
+
+  .right-col {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+.island {
+  background: var(--island-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: -20px -20px 60px rgba(108, 99, 255, 0.05),
+    30px 30px 80px rgba(255, 99, 231, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--highlight);
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1rem 0 0.5rem;
+  color: #aaa;
+}
+
+p,
+label {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+select,
+input[type="number"],
+input[type="file"],
+button {
+  width: 100%;
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 0.65rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text);
+  font-size: 1rem;
+  appearance: none;
+  font-family: inherit;
+  transition: 0.2s ease;
+}
+
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#downloadBtn.ready {
+  background-color: var(--highlight);
+  color: black;
+  box-shadow: 0 0 15px var(--highlight);
+  font-weight: bold;
+}
+
+#processBtn.glow {
+  background-color: var(--highlight);
+  color: black;
+  box-shadow: 0 0 12px var(--highlight);
+  font-weight: bold;
+}
+
+#status {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #aaa;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.drag-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.drag-area.over {
+  outline: 2px dashed var(--highlight);
+  outline-offset: -10px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+
+input[type="file"] {
+  cursor: pointer;
+}
+
+/* Additional Styles for Dropdown, Buttons, and File Input */
+
+select {
+  background: var(--island-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--text);
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  appearance: none;
+  transition: 0.2s ease;
+}
+
+select option {
+  background-color: #1a1a1d;
+  color: var(--text);
+  padding: 0.5rem;
+}
+
+select option:hover {
+  background-color: var(--highlight);
+  color: black;
+}
+
+select:focus {
+  border-color: var(--highlight);
+  outline: none;
+}
+
+/* Styling the up and down buttons for the number input */
+input[type="number"] {
+  background: var(--island-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.65rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: 0.2s ease;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]:focus {
+  border-color: var(--highlight);
+  outline: none;
+}
+
+/* File Input Button */
+input[type="file"] {
+  background: var(--island-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  padding: 0.65rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+input[type="file"]:focus {
+  border-color: var(--highlight);
+  outline: none;
+}
+
+/* Hover effect for file input */
+input[type="file"]:hover {
+  background-color: var(--highlight);
+  color: black;
+}
+
+/* Hover effect for select */
+select:hover {
+  background-color: var(--highlight);
+  color: black;
+}
+
+input::file-selector-button {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}

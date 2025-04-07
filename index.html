@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PDF Erweiterer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  </head>
+  <body>
+    <div class="drag-area" id="dragArea"></div>
+
+    <div class="container">
+      <!-- Info -->
+      <div class="island">
+        <h1>PDF Erweiterer</h1>
+        <p>by Kim Roelofs</p>
+        <p>
+          <a
+            href="https://kim4web.de"
+            style="color: var(--highlight); text-decoration: none"
+            >kim4web.de</a
+          >
+        </p>
+        <p style="margin-top: 1rem">
+          Diese App erweitert deine PDF-Dateien mit optionalem Raum links oder
+          rechts. Wähle zwischen Linien, Punkten oder Kästchen als Hintergrund.
+        </p>
+        <p style="margin-top: 1rem">
+          Bei Problemen oder Fragen, schreibe mir gerne eine Nachricht.
+          <a
+            style="color: var(--highlight); text-decoration: none"
+            href="mailto:kim4web@gmail.com"
+            >kim4web@gmail.com</a
+          >
+        </p>
+      </div>
+
+      <!-- Settings + Upload/Download -->
+      <div class="right-col">
+        <div class="island">
+          <h2>Einstellungen</h2>
+
+          <label for="backgroundSelect">Hintergrund:</label>
+          <select id="backgroundSelect">
+            <option value="white">Leer (weiß)</option>
+            <option value="lines">Linien</option>
+            <option value="dots">Punkte</option>
+            <option value="grid">Kästchen</option>
+          </select>
+
+          <label for="sideSelect">Position:</label>
+          <select id="sideSelect">
+            <option value="right">Rechts</option>
+            <option value="left">Links</option>
+          </select>
+
+          <label for="percentInput">Breite (% vom Original):</label>
+          <input
+            type="number"
+            id="percentInput"
+            min="10"
+            max="300"
+            value="100"
+          />
+        </div>
+
+        <div class="island">
+          <h2>Upload & Download</h2>
+
+          <label for="fileInput">PDF-Datei auswählen:</label>
+          <input type="file" id="fileInput" accept="application/pdf" />
+
+          <button id="processBtn" onclick="processPDF()">PDF bearbeiten</button>
+          <button
+            id="downloadBtn"
+            onclick="downloadPDF()"
+            style="display: none"
+          >
+            Download PDF
+          </button>
+        </div>
+
+        <div class="island">
+          <h2>Konsolenausgabe</h2>
+          <div id="status">Bereit...</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
