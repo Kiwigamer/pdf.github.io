@@ -1,3 +1,7 @@
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+
+const analytics = getAnalytics(); // You already initialized it!
+
 let pdfBytesGlobal = null;
 const status = document.getElementById("status");
 const downloadBtn = document.getElementById("downloadBtn");
@@ -146,6 +150,13 @@ async function processPDF() {
   downloadBtn.style.display = "block";
   downloadBtn.classList.add("ready");
   log("✅ Fertig! Download bereit.");
+
+  logEvent(analytics, 'pdf_processed', {
+    pages: pageCount,
+    background: background,
+    side: side,
+    extra_width_percent: percent
+  });
 }
 
 function downloadPDF() {
