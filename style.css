@@ -237,6 +237,42 @@ input[type="file"]:hover {
   color: black;
 }
 
+/* Syles For Checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: var(--island-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 0.1rem;
+  left: 0.5rem;
+  width: 0.5rem;
+  height: 1rem;
+  border: solid var(--highlight);
+  border-width: 0 0.15rem 0.15rem 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+input[type="checkbox"]:checked::after {
+  transform: rotate(45deg) scale(1);
+}
+
+input[type="checkbox"]:hover {
+  background-color: rgba(124, 95, 255, 0.15);
+  border-color: var(--highlight);
+}
+
 /* Hover effect for select */
 select:hover {
   background-color: var(--highlight);

@@ -112,6 +112,18 @@ async function processPDF() {
       });
     }
 
+    // Draw Trennline if checkbox is checked
+    const drawLine = document.getElementById("lineCheckbox").checked;
+    if (drawLine) {
+      const lineX = side === "right" ? width : extraWidth;
+      newPage.drawLine({
+        start: { x: lineX, y: 0 },
+        end: { x: lineX, y: height },
+        thickness: 1,
+        color: PDFLib.rgb(0.5, 0.5, 0.5), // gray line
+      });
+    }
+
     const origX = side === "right" ? 0 : extraWidth;
     newPage.drawPage(embeddedPage, {
       x: origX,
