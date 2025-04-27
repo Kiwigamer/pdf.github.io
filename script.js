@@ -3,6 +3,8 @@ const status = document.getElementById("status");
 const downloadBtn = document.getElementById("downloadBtn");
 const processBtn = document.getElementById("processBtn");
 const fileInput = document.getElementById("fileInput");
+const fileName = document.getElementById("fileName");
+const fileNameLabel = document.getElementById("fileNameLabel");
 
 function log(msg) {
   status.textContent += msg + "\n";
@@ -15,9 +17,14 @@ fileInput.addEventListener("change", () => {
       log("❌ Nur PDF-Dateien erlaubt.");
       fileInput.value = "";
       processBtn.classList.remove("glow");
+      fileName.classList.add("hidden");
+      fileNameLabel.classList.add("hidden");
     } else {
       log(`📤 Datei hochgeladen: ${file.name}`);
       processBtn.classList.add("glow");
+      fileNameLabel.classList.remove("hidden");
+      fileName.value = file.name;
+      fileName.classList.remove("hidden");
     }
   }
 });
@@ -146,9 +153,10 @@ function downloadPDF() {
 
   const blob = new Blob([pdfBytesGlobal], { type: "application/pdf" });
   const url = URL.createObjectURL(blob);
+  const newFileName = fileName.value || "erweitertes_pdf.pdf"; // Default name if input is empty
   const a = document.createElement("a");
   a.href = url;
-  a.download = "erweitertes_pdf.pdf";
+  a.download = newFileName;
   a.click();
 }
 

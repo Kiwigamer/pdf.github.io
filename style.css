@@ -88,6 +88,7 @@ label {
 select,
 input[type="number"],
 input[type="file"],
+input[type="text"],
 button {
   width: 100%;
   margin-top: 0.4rem;
@@ -114,6 +115,10 @@ select {
 button {
   cursor: pointer;
   font-weight: 500;
+}
+
+.hidden {
+  display: none;
 }
 
 #downloadBtn.ready {
@@ -191,7 +196,7 @@ select:focus {
 }
 
 /* Styling the up and down buttons for the number input */
-input[type="number"] {
+input[type="number"],input[type="text"] {
   background: var(--island-bg);
   border: 1px solid var(--border);
   color: var(--text);
@@ -208,7 +213,7 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"]:focus {
+input[type="number"]:focus, input[type="text"]:focus {
   border-color: var(--highlight);
   outline: none;
 }

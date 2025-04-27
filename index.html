@@ -105,6 +105,14 @@
           <input type="file" id="fileInput" accept="application/pdf" />
 
           <button id="processBtn" onclick="processPDF()">PDF bearbeiten</button>
+
+          <label for="fileName" id="fileNameLabel" class="hidden">Dateinamen ändern</label>
+          <input
+            type="text"
+            id="fileName"
+            class="hidden"
+          />
+
           <button
             id="downloadBtn"
             onclick="downloadPDF()"
