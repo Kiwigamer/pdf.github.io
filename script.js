@@ -188,3 +188,35 @@ window.addEventListener("drop", (e) => {
     processBtn.classList.add("glow");
   }
 });
+
+document.getElementById("backgroundSelect").addEventListener("change", saveSettings);
+document.getElementById("sideSelect").addEventListener("change", saveSettings);
+document.getElementById("percentInput").addEventListener("input", saveSettings);
+document.getElementById("lineCheckbox").addEventListener("change", saveSettings);
+document.getElementById("fileName").addEventListener("input", saveSettings);
+
+// Save settings
+function saveSettings() {
+  const settings = {
+    background: document.getElementById("backgroundSelect").value,
+    side: document.getElementById("sideSelect").value,
+    percent: document.getElementById("percentInput").value,
+    drawLine: document.getElementById("lineCheckbox").checked,
+  };
+  localStorage.setItem("pdfToolSettings", JSON.stringify(settings));
+}
+
+window.addEventListener("DOMContentLoaded", loadSettings);
+
+
+function loadSettings() {
+  const settingsStr = localStorage.getItem("pdfToolSettings");
+  if (!settingsStr) return; // No saved settings
+  
+  const settings = JSON.parse(settingsStr);
+
+  if (settings.background) document.getElementById("backgroundSelect").value = settings.background;
+  if (settings.side) document.getElementById("sideSelect").value = settings.side;
+  if (settings.percent) document.getElementById("percentInput").value = settings.percent;
+  if (typeof settings.drawLine === "boolean") document.getElementById("lineCheckbox").checked = settings.drawLine;
+}
