@@ -104,7 +104,7 @@
           <label for="fileInput">PDF-Datei auswählen:</label>
           <input type="file" id="fileInput" accept="application/pdf" />
 
-          <button id="processBtn" onclick="processPDF()">PDF bearbeiten</button>
+          <button id="processBtn">PDF bearbeiten</button>
 
           <label for="fileName" id="fileNameLabel" class="hidden">Dateinamen ändern</label>
           <input
@@ -115,7 +115,6 @@
 
           <button
             id="downloadBtn"
-            onclick="downloadPDF()"
             style="display: none"
           >
             Download PDF
@@ -129,6 +128,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

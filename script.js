@@ -10,6 +10,9 @@ const fileInput = document.getElementById("fileInput");
 const fileName = document.getElementById("fileName");
 const fileNameLabel = document.getElementById("fileNameLabel");
 
+document.getElementById("processBtn").addEventListener("click", processPDF);
+document.getElementById("downloadBtn").addEventListener("click", downloadPDF);
+
 function log(msg) {
   status.textContent += msg + "\n";
 }
